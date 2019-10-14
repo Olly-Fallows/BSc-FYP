@@ -21,7 +21,7 @@ class test_filter(unittest.TestCase):
         pass
 
     def test_filter_to_string(self):
-        self.assertEqual(1,2,"Should be equal")
+        pass
 
     def test_filter_apply_to_valid_matrix(self):
         pass

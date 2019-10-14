@@ -1,6 +1,6 @@
 import unittest
 
-class test_population(self):
+class test_population(unittest.TestCase):
 
     def test_generate_population_from_size_and_config(self):
         pass

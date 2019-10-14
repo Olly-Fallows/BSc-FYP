@@ -1,6 +1,6 @@
 import unittest
 
-class test_mutator(self):
+class test_mutator(unittest.TestCase):
 
     def test_add_layer(self):
         pass
