@@ -27,19 +27,86 @@ class test_matrix(unittest.TestCase):
                 self.fail("Matrix should fail with parameter '"+str(a)+"' for __init__")
 
     def test_matrix_not_empty_list_init(self):
-        pass
+        tests = ([[0,0,0],[0,1,0],[0,0,0]], [[[0,0,0],[0,0,0],[0,0,0]],[[0,0,0],[0,1,0],[0,0,0]],[[0,0,0],[0,0,0],[0,0,0]]])
+        for a in tests:
+            try:
+                mat = matrix.matrix(val=a)
+            except:
+                self.fail("Matrix through an error when given the parameter of "+str(a)+" for __init__")
 
     def test_matrix_dimensions_init(self):
-        pass
+        tests = ([1,1],[1,1,1],[20,5,4])
+        for a in tests:
+            try:
+                mat = matrix.matrix(dimensions=a)
+            except:
+                self.fail("Matrix through an error when given the paramerter of "+str(a)+" for __init__")
 
     def test_matrix_zero_dimensions_init(self):
-        pass
+        tests = ([], [0], [0,0,0])
+        failed = False
+        for a in tests:
+            try:
+                mat = matrix.matrix(dimensions=a)
+                failed = True
+            except:
+                pass
+            if failed:
+                self.fail("Matrix didn't throw an error with parameter "+str(a)+" for __init__")
 
     def test_matrix_negative_dimensions_init(self):
-        pass
+        tests = ([-5,-5,-5],[5,-5,-5],[5,5,-5])
+        failed = False
+        for a in tests:
+            try:
+                mat = matrix.matrix(dimensions=a)
+                failed = True
+            except:
+                pass
+            if failed:
+                self.fail("Matrix didn't throw an error with parameter "+str(a)+" for __init__")
 
     def test_matrix_to_string(self):
-        pass
+        tests = ([[0,0,0],[0,1,0],[0,0,0]], [[[0,0,0],[0,0,0],[0,0,0]],[[0,0,0],[0,1,0],[0,0,0]],[[0,0,0],[0,0,0],[0,0,0]]])
+        answers = ("", "")
+        i=0
+        for a in tests:
+            try:
+                mat = matrix.matrix(val=a)
+                self.assetEqual(str(mat), answer[i])
+            except:
+                self.fail("Matrix through an error when given the parameter of "+str(a)+" for toString")
+            i += 1
+
+        tests = ([1,1],[1,1,1],[3,3,3])
+        answers = ("", "", "")
+        i=0
+        for a in tests:
+            try:
+                mat = matrix.matrix(dimensions=a)
+                self.assetEqual(str(mat), answer[i])
+            except:
+                self.fail("Matrix through an error when given the parameter of "+str(a)+" for toString")
+            i += 1
 
     def test_matrix_get_dimensions(self):
-        pass
+        tests = ([[0,0,0],[0,1,0],[0,0,0]], [[[0,0,0],[0,0,0],[0,0,0]],[[0,0,0],[0,1,0],[0,0,0]],[[0,0,0],[0,0,0],[0,0,0]]])
+        answers = ([3,3], [3,3,3])
+        i=0
+        for a in tests:
+            try:
+                mat = matrix.matrix(val=a)
+                self.assetEqual(mat.dimensions, answer[i])
+            except:
+                self.fail("Matrix through an error when given the parameter of "+str(a)+" for toString")
+            i += 1
+
+        tests = ([1,1],[1,1,1],[3,3,3])
+        i=0
+        for a in tests:
+            try:
+                mat = matrix.matrix(dimensions=a)
+                self.assetEqual(mat.dimensions, a)
+            except:
+                self.fail("Matrix through an error when given the parameter of "+str(a)+" for toString")
+            i += 1
