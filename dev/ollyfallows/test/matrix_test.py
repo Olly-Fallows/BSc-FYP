@@ -71,22 +71,16 @@ class test_matrix(unittest.TestCase):
         answers = ("[[0, 0, 0], [0, 1, 0], [0, 0, 0]]", "[[[0, 0, 0], [0, 0, 0], [0, 0, 0]], [[0, 0, 0], [0, 1, 0], [0, 0, 0]], [[0, 0, 0], [0, 0, 0], [0, 0, 0]]]")
         i=0
         for a in tests:
-            try:
-                mat = matrix.matrix(val=a)
-                self.assetEqual(str(mat), answer[i])
-            except:
-                self.fail("Matrix through an error when given the parameter of "+str(a)+" for toString")
+            mat = matrix.matrix(val=a)
+            self.assertEqual(str(mat), answer[i])
             i += 1
 
         tests = ([1,1],[1,1,1],[3,3,3])
         answers = ("[[1]]", "[[[1]]]", "[[[1, 0, 0], [0, 0, 0], [0, 0, 0]], [[0, 0, 0], [0, 1, 0], [0, 0, 0]], [[0, 0, 0], [0, 0, 0], [0, 0, 1]]]")
         i=0
         for a in tests:
-            try:
-                mat = matrix.matrix(dimensions=a)
-                self.assetEqual(str(mat), answer[i])
-            except:
-                self.fail("Matrix through an error when given the parameter of "+str(a)+" for toString")
+            mat = matrix.matrix(dimensions=a)
+            self.assertEqual(str(mat), answer[i])
             i += 1
 
     def test_matrix_get_dimensions(self):
@@ -94,19 +88,13 @@ class test_matrix(unittest.TestCase):
         answers = ([3,3], [3,3,3])
         i=0
         for a in tests:
-            try:
-                mat = matrix.matrix(val=a)
-                self.assetEqual(mat.dimensions, answer[i])
-            except:
-                self.fail("Matrix through an error when given the parameter of "+str(a)+" for toString")
+            mat = matrix.matrix(val=a)
+            self.assertEqual(mat.dimensions, answer[i])
             i += 1
 
         tests = ([1,1],[1,1,1],[3,3,3])
         i=0
         for a in tests:
-            try:
-                mat = matrix.matrix(dimensions=a)
-                self.assetEqual(mat.dimensions, a)
-            except:
-                self.fail("Matrix through an error when given the parameter of "+str(a)+" for toString")
+            mat = matrix.matrix(dimensions=a)
+            self.assertEqual(mat.dimensions, a)
             i += 1
