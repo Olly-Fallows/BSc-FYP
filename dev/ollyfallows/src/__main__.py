@@ -1,2 +1,2 @@
 if __name__ == "__main__":
-    pass
+    print("This isn't implemented yet")

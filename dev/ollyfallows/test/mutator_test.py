@@ -1,5 +1,8 @@
 import unittest
 
+from neat import mutator
+import model
+
 class test_mutator(unittest.TestCase):
 
     def test_add_layer(self):
