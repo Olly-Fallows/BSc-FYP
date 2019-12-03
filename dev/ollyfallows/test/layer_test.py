@@ -1,6 +1,7 @@
 import unittest
 
 from model import layer
+from model import filter
 
 class test_layer(unittest.TestCase):
 

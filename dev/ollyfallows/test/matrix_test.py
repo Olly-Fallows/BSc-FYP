@@ -72,7 +72,7 @@ class test_matrix(unittest.TestCase):
         i=0
         for a in tests:
             mat = matrix.matrix(val=a)
-            self.assertEqual(str(mat), answer[i])
+            self.assertEqual(str(mat), answers[i])
             i += 1
 
         tests = ([1,1],[1,1,1],[3,3,3])
@@ -80,7 +80,7 @@ class test_matrix(unittest.TestCase):
         i=0
         for a in tests:
             mat = matrix.matrix(dimensions=a)
-            self.assertEqual(str(mat), answer[i])
+            self.assertEqual(str(mat), answers[i])
             i += 1
 
     def test_matrix_get_dimensions(self):
@@ -89,7 +89,7 @@ class test_matrix(unittest.TestCase):
         i=0
         for a in tests:
             mat = matrix.matrix(val=a)
-            self.assertEqual(mat.dimensions, answer[i])
+            self.assertEqual(mat.dimensions, answers[i])
             i += 1
 
         tests = ([1,1],[1,1,1],[3,3,3])

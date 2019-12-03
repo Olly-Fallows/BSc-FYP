@@ -1,7 +1,7 @@
 import unittest
 
 from neat import mutator
-import model
+from model import *
 
 class test_mutator(unittest.TestCase):
 
@@ -22,12 +22,12 @@ class test_mutator(unittest.TestCase):
 
     def test_remove_layer(self):
         net1 = generate_basic_network()
-        net2 = mutator.remove_layer(net, 0)
+        net2 = mutator.remove_layer(net1, 0)
         self.assertEqual(net1.layer_count(), net2.layer_count()+1)
 
     def test_remove_filter(self):
         net1 = generate_basic_network()
-        net2 = mutator.remove_filter(net, 0, 0)
+        net2 = mutator.remove_filter(net1, 0, 0)
         self.assertEqual(net1.layers[0].filter_count(), net2.layers[0].filter_count()+1)
 
     def test_mutate_inmutable_layer(self):
