@@ -15,7 +15,7 @@ class test_matrix(unittest.TestCase):
             self.fail("Matrix should fail if not given parameters for __init__")
 
     def test_matrix_empty_list_init(self):
-        for a in ([],[[]],[[[[[]]]]],None):
+        for a in ([],[[]],[[[]]],None):
             failed = False
             try:
                 mat = matrix.matrix(val=a)

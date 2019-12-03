@@ -4,3 +4,9 @@ class network:
 
     def __init__(self, layers=[]):
         pass
+
+    def apply(self, mat):
+        pass
+
+    def layer_count(self):
+        return len(self.layers)

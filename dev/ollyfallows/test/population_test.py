@@ -1,5 +1,8 @@
 import unittest
 
+import model
+from neat import population
+
 class test_population(unittest.TestCase):
 
     def test_generate_population_from_size_and_config(self):

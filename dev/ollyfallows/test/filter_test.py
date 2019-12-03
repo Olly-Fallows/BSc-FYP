@@ -19,7 +19,7 @@ class test_filter(unittest.TestCase):
                 [[0,1,0],[1,0,1],[0,1,0]],
                 [[0,0,0],[0,1,0],[0,0,0]]
             ]
-        ))
+        ), edge_handle="ignore")
         inMat = matrix.matrix(val=
             [
                 [[0,1,1,1,1],[1,1,1,1,1],[1,1,1,1,1],[1,1,1,1,1],[1,1,1,1,0]],
@@ -28,11 +28,7 @@ class test_filter(unittest.TestCase):
             ]
         )
         expResult = matrix.matrix(val=
-            [
-                [[],[],[]],
-                [[],[],[]],
-                [[],[],[]]
-            ]
+            [[],[],[]]
         )
         result = flt.apply(inMat)
         self.assertEqual(str(expResult), str(result))

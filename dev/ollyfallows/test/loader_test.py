@@ -2,7 +2,7 @@ import unittest
 
 from model import loader
 
-class test_network(unittest.TestCase):
+class test_loader(unittest.TestCase):
 
     def test_network_from_string(self):
         pass

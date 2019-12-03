@@ -1,7 +1,14 @@
-# This class contains all the functions used to mutate a network. It can be extended
-# to allow for more tailored mutation.
+def add_layer(net):
+    pass
 
-class mutator:
+def add_filter(net, layer):
+    pass
 
-    def __init__(self):
-        pass
+def change_filter(net, layer, filter):
+    pass
+
+def remove_layer(net, layer):
+    pass
+
+def remove_filter(net, layer, filter):
+    pass

@@ -17,8 +17,8 @@ class test_mutator(unittest.TestCase):
 
     def test_change_filter(self):
         net1 = generate_basic_network()
-        net2 = mutator.change_filter(net1, 0)
-        self.assertNotEqual(str(net1.layers[0]), str(net2.layers[0]))
+        net2 = mutator.change_filter(net1, 0, 0)
+        self.assertNotEqual(str(net1.layers[0].content[0]), str(net2.layers[0].content[0]))
 
     def test_remove_layer(self):
         net1 = generate_basic_network()
