@@ -1,4 +1,9 @@
+import sys
 import unittest
+
+if __name__ == "__main__":
+    # Setup import from other directory
+    sys.path = [sys.path[0]+"/../src/"]+sys.path
 
 from model import layer
 from model import filter
@@ -28,3 +33,6 @@ class test_layer(unittest.TestCase):
         )
         result = lyr.apply(inMat)
         self.assertEqual(str(expResult), str(result))
+
+if __name__ == "__main__":
+    unittest.main()

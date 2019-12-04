@@ -1,4 +1,10 @@
+import sys
 import unittest
+
+if __name__ == "__main__":
+    # Setup import from other directory
+    sys.path = [sys.path[0]+"/../src/"]+sys.path
+
 from util import file
 
 class test_file(unittest.TestCase):
@@ -16,3 +22,6 @@ class test_file(unittest.TestCase):
         expResult = ["file1.txt", "file2.txt", "file5.txt"]
         result = file.get_folder_content("./test-files/folder-test/")
         self.assertEqual(expResult, result)
+
+if __name__ == "__main__":
+    unittest.main()

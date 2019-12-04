@@ -1,4 +1,9 @@
+import sys
 import unittest
+
+if __name__ == "__main__":
+    # Setup import from other directory
+    sys.path = [sys.path[0]+"/../src/"]+sys.path
 
 from model import loader
 
@@ -21,3 +26,6 @@ class test_loader(unittest.TestCase):
         }
         net = loader.network_from_config(config)
         self.assertEqual(net.layer_count(), 6)
+
+if __name__ == "__main__":
+    unittest.main()

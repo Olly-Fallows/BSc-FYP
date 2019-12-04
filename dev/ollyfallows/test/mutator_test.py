@@ -1,4 +1,9 @@
+import sys
 import unittest
+
+if __name__ == "__main__":
+    # Setup import from other directory
+    sys.path = [sys.path[0]+"/../src/"]+sys.path
 
 from neat import mutator
 from model import *
@@ -83,3 +88,6 @@ def generate_basic_network():
     }
     net = loader.network_from_config(config)
     return net
+
+if __name__ == "__main__":
+    unittest.main()

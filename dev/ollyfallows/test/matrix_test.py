@@ -1,4 +1,9 @@
+import sys
 import unittest
+
+if __name__ == "__main__":
+    # Setup import from other directory
+    sys.path = [sys.path[0]+"/../src/"]+sys.path
 
 from model import matrix
 
@@ -98,3 +103,6 @@ class test_matrix(unittest.TestCase):
             mat = matrix.matrix(dimensions=a)
             self.assertEqual(mat.dimensions, a)
             i += 1
+
+if __name__ == "__main__":
+    unittest.main()

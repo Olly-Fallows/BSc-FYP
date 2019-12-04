@@ -1,4 +1,9 @@
+import sys
 import unittest
+
+if __name__ == "__main__":
+    # Setup import from other directory
+    sys.path = [sys.path[0]+"/../src/"]+sys.path
 
 from model import relu
 from model import matrix
@@ -23,3 +28,6 @@ class test_relu(unittest.TestCase):
         )
         result = rel.apply(inMat)
         self.assertEqual(expMat, result)
+
+if __name__ == "__main__":
+    unittest.main()

@@ -1,4 +1,9 @@
+import sys
 import unittest
+
+if __name__ == "__main__":
+    # Setup import from other directory
+    sys.path = [sys.path[0]+"/../src/"]+sys.path
 
 from model import filter
 from model import matrix
@@ -32,3 +37,6 @@ class test_filter(unittest.TestCase):
         )
         result = flt.apply(inMat)
         self.assertEqual(str(expResult), str(result))
+
+if __name__ == "__main__":
+    unittest.main()
