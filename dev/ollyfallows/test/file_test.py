@@ -11,7 +11,7 @@ class test_file(unittest.TestCase):
 
     def test_load_text_file(self):
         expResult = "This is a test\nThis is a new line"
-        result = file.load_file("./test-files/load-test.txt")
+        result = file.load_file("/test-files/load-test.txt")
         self.assertEqual(expResult, result)
 
     def test_file_exists(self):
