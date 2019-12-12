@@ -77,11 +77,11 @@ class test_mutator(unittest.TestCase):
 def generate_basic_network():
     config = {
         'layers':[
-            {"type":"conv", "conv_count":3, "conv_dim":[7,7,3], "conv_edge_handling":"pad-0", "mutable":True, "removable":True},
+            {"type":"conv", "conv_count":3, "conv_dim":[3,7,7], "conv_edge_handling":1, "mutable":True, "removable":True},
             {"type":"relu", "mutable":False, "removable":True},
-            {"type":"conv", "conv_count":1, "conv_dim":[2,2,3], "conv_step":2, "conv_edge_handling":"ignore", "mutable":False, "removable":False},
+            {"type":"conv", "conv_count":1, "conv_dim":[3,3,3], "conv_step":2, "conv_edge_handling":0, "mutable":False, "removable":False},
             {"type":"relu", "mutable":False, "removable":True},
-            {"type":"conv", "conv_count":5, "conv_dim":[7,7,1], "conv_edge_handling":"pad-0", "mutable":True, "removable":True},
+            {"type":"conv", "conv_count":5, "conv_dim":[1,7,7], "conv_edge_handling":1, "mutable":True, "removable":True},
             {"type":"relu", "mutable":False, "removable":True},
         ],
         'mutation_rate':0.1

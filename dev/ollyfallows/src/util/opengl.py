@@ -54,6 +54,5 @@ class opengl:
 
         output = np.frombuffer(out_buffer.read(), dtype=np.float32)
         output = output.reshape(out_size)
-
-        print(output)
+        
         return output

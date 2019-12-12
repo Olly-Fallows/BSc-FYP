@@ -46,12 +46,12 @@ int kernelPos(float x, float y, float z){
 float applyKernel(int x, int y) {
   float val = 0;
   int cellCount = 0;
-  for (int a=-(KERNEL_X-1)/2; a<=(KERNEL_X-1)/2; a++) {
-    int xpos = a+x;
-    if (xpos < 0 || xpos >= IN_X) {
+  for (int a=0; a<KERNEL_X; a++) {
+    int xpos = a+x-(KERNEL_X-1)/2;
+    if (xpos < 0 || xpos > IN_X) {
       switch (EDGE) {
       case 0:
-          return 0;
+        return 0;
       case 1:
         continue;
       case 2:
@@ -63,12 +63,12 @@ float applyKernel(int x, int y) {
         continue;
       }
     }
-    for (int b=-(KERNEL_Y-1)/2; b<=(KERNEL_Y-1)/2; b++) {
-      int ypos = b+y;
-      if (ypos < 0 || ypos >= IN_Y) {
+    for (int b=0; b<KERNEL_Y; b++) {
+      int ypos = b+y-(KERNEL_Y-1)/2;
+      if (ypos < 0 || ypos > IN_Y) {
         switch (EDGE) {
         case 0:
-            return 0;
+          return 0;
         case 1:
           continue;
         case 2:
@@ -81,13 +81,13 @@ float applyKernel(int x, int y) {
         }
       }
       for (int c=0; c<KERNEL_Z; c++) {
-        val += kernel_buffer[kernelPos(a+(KERNEL_X-1)/2, b+(KERNEL_Y-1)/2, c)] *
+        val += kernel_buffer[kernelPos(a, b, c)] *
                in_buffer[inPos(xpos, ypos, c)];
         cellCount++;
       }
     }
   }
-  return val;
+  return val/cellCount;
 }
 
 void main() {
@@ -98,7 +98,7 @@ void main() {
     xoffset = int((KERNEL_X-1)/2);
     yoffset = int((KERNEL_Y-1)/2);
   }
-  int x = int(coords.x*STEP+xoffset);
-  int y = int(coords.y*STEP+yoffset);
+  int x = int(coords.x*STEP)+xoffset;
+  int y = int(coords.y*STEP)+yoffset;
   out_buffer[outPos(coords.x,coords.y,0)] = applyKernel(x,y);
 }

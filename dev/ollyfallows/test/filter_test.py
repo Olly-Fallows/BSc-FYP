@@ -18,24 +18,13 @@ class test_filter(unittest.TestCase):
             self.assertEqual(str(flt), str(mat))
 
     def test_filter_apply(self):
-        flt = filter.filter(matrix.matrix(val=
-            [
-                [[0,0,0],[0,1,0],[0,0,0]],
-                [[0,1,0],[1,0,1],[0,1,0]],
-                [[0,0,0],[0,1,0],[0,0,0]]
-            ]
-        ), edge_handle="ignore")
-        inMat = matrix.matrix(val=
-            [
-                [[0,1,1,1,1],[1,1,1,1,1],[1,1,1,1,1],[1,1,1,1,1],[1,1,1,1,0]],
-                [[0,0,1,1,1],[0,1,1,1,1],[1,1,1,1,1],[1,1,1,1,0],[1,1,1,0,0]],
-                [[0,0,0,1,1],[0,0,1,1,1],[0,1,1,1,0],[1,1,1,0,0],[1,1,0,0,0]]
-            ]
-        )
+        flt = filter.filter(matrix.matrix(val=[[[0,0,0],[0,1,0],[0,0,0]]]))
+        inMat = matrix.matrix(val=[[[1,2,3],[1,2,3],[1,2,3]]])
         expResult = matrix.matrix(val=
             [[],[],[]]
         )
         result = flt.apply(inMat)
+        print(result)
         self.assertEqual(str(expResult), str(result))
 
 if __name__ == "__main__":
