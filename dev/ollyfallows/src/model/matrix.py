@@ -5,11 +5,15 @@ import copy
 
 class matrix:
 
+    # Constructor
     def __init__(self, val=[], dimensions=None):
+        # Check that a either of the parameters have been filled
         if (val == [] or val == None) and (dimensions == None or dimensions == []):
             raise
+        # Check if the values have been provided
         if dimensions == None:
             self.mat = copy.deepcopy(val)
+        # Generate a matrix of requested size
         else:
             if len(dimensions) == 3:
                 if dimensions[0] == 0 or dimensions[1] == 0 or dimensions[2] == 0:
