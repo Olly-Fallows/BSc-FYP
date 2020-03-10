@@ -2,56 +2,87 @@
   {
     "type":"conv",
     "edge_handling":0,
+    "step":10,
+    "mutable":false,
+    "removable":false,
+    "filters":[
+      [
+        [[1,1,1],
+         [1,1,1],
+         [1,1,1]]
+      ],[
+        [[1,1,1],
+         [1,1,1],
+         [1,1,1]]
+      ]
+    ]
+  },{
+    "type":"conv",
+    "edge_handling":0,
+    "step":10,
+    "mutable":false,
+    "removable":false,
+    "filters":[
+      [
+        [[1,1,1],
+         [1,1,1],
+         [1,1,1]],
+        [[1,1,1],
+         [1,1,1],
+         [1,1,1]]
+      ]
+    ]
+  },{
+    "type":"conv",
+    "edge_handling":0,
     "step":1,
     "mutable":false,
     "removable":false,
     "filters":[
       [
         [[1,1,1],
-         [0,1,0],
-         [0,0,0]]
-      ],[
-        [[1,0,1],
-         [0,1,0],
-         [1,0,1]]
-      ]
-    ]
-  },{
-    "type":"relu",
-    "mutable":false,
-    "removable":true
-  },{
-    "type":"conv",
-    "edge_handling":0,
-    "step":1,
-    "mutable":false,
-    "removable":false,
-    "filters":[
-      [
-        [[0,0,0],
-         [0,1,0],
-         [0,0,0]],
-        [[1,0,1],
-         [0,1,0],
-         [1,0,1]]
-      ]
-    ]
-  },{
-    "type":"conv",
-    "edge_handling":0,
-    "step":1,
-    "mutable":false,
-    "removable":false,
-    "filters":[
-      [
-        [[0,1,0],
          [1,-5,1],
-         [0,1,0]]
+         [1,1,1]]
       ]
     ]
   },{
-    "type":"relu",
+    "type":"conv",
+    "edge_handling":0,
+    "step":1,
     "mutable":false,
-    "removable":true
+    "removable":false,
+    "filters":[
+      [
+        [[1,1,1],
+         [1,-5,1],
+         [1,1,1]]
+      ]
+    ]
+  },{
+    "type":"conv",
+    "edge_handling":0,
+    "step":1,
+    "mutable":false,
+    "removable":false,
+    "filters":[
+      [
+        [[1,1,1],
+         [1,-5,1],
+         [1,1,1]]
+      ]
+    ]
+  },{
+    "type":"conv",
+    "edge_handling":0,
+    "step":1,
+    "mutable":false,
+    "removable":false,
+    "filters":[
+      [
+        [[1,1,1],
+         [1,-5,1],
+         [1,1,1]]
+      ]
+    ]
   }
 ]

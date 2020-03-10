@@ -20,7 +20,7 @@ layout(std430, binding=1) buffer out_0
 };
 
 void main(){
-  const uint frag_i = gl_LocalInvocationID.x + gl_LocalInvocationID.y*OUT_X +
+  const uint frag_i = gl_LocalInvocationID.x + gl_WorkGroupID.x*OUT_X +
                       gl_LocalInvocationID.z*OUT_X*OUT_Y;
   out_buffer[frag_i] = in_buffer[frag_i];
   if (out_buffer[frag_i] < 0){

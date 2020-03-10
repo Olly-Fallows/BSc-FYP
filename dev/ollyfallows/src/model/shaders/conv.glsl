@@ -1,5 +1,7 @@
 #version 430 core
 
+#define H SIZE_H
+
 #define IN_X IN_SIZE_X
 #define IN_Y IN_SIZE_Y
 #define IN_Z IN_SIZE_Z
@@ -35,7 +37,7 @@ layout(std430, binding=2) buffer out_0
 };
 
 int outPos(float x, float y, float z) {
-  return int(x + y*OUT_X + z*OUT_X*OUT_Y);
+  return int(x + y*OUT_X + z*OUT_X*H);
 }
 int inPos(float x, float y, float z) {
   return int(x + y*IN_X + z*IN_X*IN_Y);
@@ -91,7 +93,7 @@ float applyKernel(int x, int y) {
 }
 
 void main() {
-  vec2 coords = gl_LocalInvocationID.xy;
+  vec2 coords = vec2(gl_LocalInvocationID.x, gl_WorkGroupID.x);
   int xoffset = 0;
   int yoffset = 0;
   if (EDGE == 0) {

@@ -18,4 +18,4 @@ class layer:
         return matrix.matrix(result)
 
     def filter_count(self):
-        return len(content)
+        return len(self.content)

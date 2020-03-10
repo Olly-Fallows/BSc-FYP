@@ -14,8 +14,8 @@ class filter:
         y_size = len(val.mat[0])
         x_size = len(val.mat[0][0])
         if edge_handling == 0:
-            y_size -= int((len(self.mat.mat[0])-1)/2)
-            x_size -= int((len(self.mat.mat[0][0])-1)/2)
+            y_size -= (len(self.mat.mat[0])-1)
+            x_size -= (len(self.mat.mat[0][0])-1)
         y_size /= step
         x_size /= step
         out_size = [1,int(y_size),int(x_size)]

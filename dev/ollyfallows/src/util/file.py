@@ -9,13 +9,21 @@ def load_file(source):
         raise
     return file.read()
 
+def write_file(source, data):
+    f = open(source, "w")
+    if f == None:
+        raise
+    f.write(data)
+    f.close()
+
 def try_open(source, mode, i=0):
     try:
         file = open(sys.path[i]+source)
         return file
     except:
         if i >= len(sys.path)-1:
-            return None
+            t, v, tb = sys.exc_info()
+            raise v
         else:
             return try_open(source, mode, i+1)
 

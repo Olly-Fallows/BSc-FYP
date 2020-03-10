@@ -11,8 +11,8 @@ def network_from_string(text):
             filters = []
             for b in a['filters']:
                 filters.append(filter.filter(matrix.matrix(b)))
-            layers.append(layer.layer(filters, a['edge_handling'], a['step'], a['mutable'],
-                          a['removable']))
+            layers.append(layer.layer(filters, int(a['edge_handling']), int(a['step']), bool(a['mutable']),
+                          bool(a['removable'])))
         elif a['type'] == 'relu':
             layers.append(relu.relu())
     return network.network(layers)
