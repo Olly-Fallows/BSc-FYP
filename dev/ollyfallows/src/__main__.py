@@ -9,42 +9,9 @@ import random
 import json
 import math
 import time
-import threading
-
-TP = 0
-FP = 1
-TN = 2
-FN = 3
-
-def cost(l):
-    result = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
-    for a in l:
-        if a[0] == a[1]:
-            result[a[0]][TP] += 1
-            for b in range(5):
-                if a[0] == b:
-                    continue
-                result[b][TN] += 1
-        else:
-            result[a[1]][FP] += 1
-            result[a[0]][FN] += 1
-            for b in range(5):
-                if a[0] == b or a[1] == b:
-                    continue
-                result[b][TN] += 1
-    return result
-
-def specificity(l):
-    return l[TN]/(l[TN]+l[FP])
-
-def sensitivity(l):
-    return l[TP]/(l[TP]+l[FN])
-
-def accuracy(l):
-    return (l[TP]+l[TN])/(l[TP]+l[FP]+l[TN]+l[FN])
 
 def runNet(net, data, folder, start=0, end=400):
-    l = []
+    fit = 0
     for a in range(start, start+end):
         i = list(data.keys())[a]
         img = image.load_image(folder+"/data/"+i+".jpeg")
@@ -52,29 +19,25 @@ def runNet(net, data, folder, start=0, end=400):
             r = net.apply(img).mat
             result = []
             for rs in r:
-                result.append(rs[0][0])
+                v = rs[0][0]
+                if v < 0:
+                    v = 0
+                result.append(v)
         except:
             print("network failed")
             raise
-        answer = 0
-        highest = 0
+
         for b in range(len(result)):
-            if math.tanh(result[b]) >= highest:
-                highest = math.tanh(result[b])
-                answer = b
-        l.append([int(data[i]),answer])
-    return l
+            if int(data[i]) == b:
+                fit += result[b]
+            else:
+                fit -= result[b]
+    return fit
 
 def fitnessCalc(net, data, folder, start=0, end=400):
     fitness = 0
     try:
-        c = cost(runNet(net,data,folder,start,end))
-        t = [0,0,0,0]
-        acc = 0
-        for a in c:
-            acc += accuracy(a)
-        acc/5
-        fitness = acc
+        fitness = runNet(net,data,folder,start,end)
     except:
         return 0
     return fitness
@@ -147,6 +110,8 @@ if __name__ == "__main__":
         new_pop = []
         for a in range(len(pop)):
             for b in list(ordered.keys()):
+                if ordered[b] == 0:
+                    continue
                 if random.random() < 0.15:
                     try:
                         new_pop.append(mutator.mutate(copy.deepcopy(b), 0.6))
