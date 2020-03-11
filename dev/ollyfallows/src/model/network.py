@@ -6,6 +6,7 @@ class network:
     def __init__(self, layers=[]):
         self.layers = layers
 
+    # Function to apply all layers onto data
     def apply(self, val):
         step = val
         for a in self.layers:
@@ -15,6 +16,7 @@ class network:
     def layer_count(self):
         return len(self.layers)
 
+    # A function to convert the network into a printable format
     def __str__(self):
         s = ""
         for a in self.layers:
@@ -26,6 +28,7 @@ class network:
             s += "====================\n"
         return s
 
+    # Function to convert the network into a json format for saving
     def json(self):
         first = True
         s = "["

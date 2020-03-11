@@ -2,6 +2,9 @@ import copy
 
 from . import matrix
 
+# This class is a wrapper for executing multiple filters on the same data as to
+# perform the convolution for a whole layer
+
 class layer:
 
     def __init__(self, content=[], edge_handling=1, step=1, mutable=False, removable=False):
