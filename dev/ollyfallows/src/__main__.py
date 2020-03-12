@@ -22,6 +22,8 @@ def runNet(net, data, folder, start=0, end=400):
                 v = rs[0][0]
                 if v < 0:
                     v = 0
+                elif v > 1:
+                    v = 1
                 result.append(v)
         except:
             print("network failed")
@@ -29,7 +31,7 @@ def runNet(net, data, folder, start=0, end=400):
 
         for b in range(len(result)):
             if int(data[i]) == b:
-                fit += result[b]
+                fit += result[b]*4
             else:
                 fit -= result[b]
     return fit
@@ -39,7 +41,7 @@ def fitnessCalc(net, data, folder, start=0, end=400):
     try:
         fitness = runNet(net,data,folder,start,end)
     except:
-        return 0
+        return -2000
     return fitness
 
 def test(pop, trainData, inputFolder, gen):
@@ -77,7 +79,7 @@ if __name__ == "__main__":
     pop = []
     for a in range(50):
         try:
-            pop.append(mutator.mutate(copy.deepcopy(net), 0.99))
+            pop.append(mutator.mutate(copy.deepcopy(net), 0.9))
         except:
             print("Mutate Failed")
             pop.append(copy.deepcopy(net))
@@ -100,12 +102,6 @@ if __name__ == "__main__":
             file.write_file(outputFolder+"/gen-"+str(gen)+"-net"+str(b)+".json", a.json())
 
         ordered = {k: v for k, v in sorted(fitness.items(), key=lambda item: -item[1])}
-        file.write_file(outputFolder+"/net"+str(gen)+".json", list(ordered.keys())[0].json())
-        csv = ""
-        l = runNet(list(ordered.keys())[0], testData, inputFolder, 0, len(testData))
-        for a in l:
-            csv += str(a[0])+","+str(a[1])+"\n"
-        file.write_file(outputFolder+"/"+str(gen)+"-output.csv", csv)
 
         new_pop = []
         for a in range(len(pop)):
